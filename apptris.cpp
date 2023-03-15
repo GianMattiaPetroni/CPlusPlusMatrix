@@ -7,34 +7,39 @@ using namespace std;
 // -1 per il pareggio
 int isWinner(char *arr)
 {
-    for (int i = 0; i < 9; i++)
+
+    for (int i = 0; i < 9; i += 3)
     {
         if (arr[i] != '-')
         {
-
             if ((arr[i] == arr[i + 1]) && (arr[i] == arr[i + 2])) // orizzontale
             {
                 return 1;
             }
-            else if ((arr[i] == arr[i + 3]) && (arr[i + 3] == arr[i + 6])) // verticale
-            {
-                return 1;
-            }
-            else if ((arr[0] == arr[4]) && (arr[4] == arr[8]) || (arr[2] == arr[4] && arr[4] == arr[6])) // diagonale
-            {
-                return 1;
-            }
-            else
-            {
-
-                return 0;
-            }
-            
-        }else
-            {
-                return -1;
-            }
+        }
     }
+    for (int i = 0; i < 3; i++)
+    {
+        if (arr[i] != '-')
+        {
+            if ((arr[i] == arr[i + 3]) && (arr[i] == arr[i + 6])) // verticale
+            {
+                return 1;
+            }
+        }
+    }
+    if (((arr[0] != '-') && (arr[0] == arr[4]) && (arr[0] == arr[8])) || ((arr[2] != '-') && (arr[2] == arr[4]) && (arr[2] == arr[6]))) // diagonale
+    {
+        return 1;
+    }
+    for (int i = 0; i < 9; i++)
+    {
+        if (arr[i] == '-')
+        {
+            return 0;
+        }
+    }
+    return -1;
 }
 
 void stampa(char *a)
