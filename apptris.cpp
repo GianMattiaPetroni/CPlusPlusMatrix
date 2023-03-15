@@ -12,15 +12,15 @@ int isWinner(char *arr)
         if (arr[i] != '-')
         {
 
-            if (arr[i] == arr[i + 1] && arr[i] == arr[i + 2]) //orizzontale
+            if ((arr[i] == arr[i + 1]) && (arr[i] == arr[i + 2])) // orizzontale
             {
                 return 1;
             }
-            else if (arr[i] == arr[i + 3] && arr[i] == arr[i + 6]) //verticale
+            else if ((arr[i] == arr[i + 3]) && (arr[i + 3] == arr[i + 6])) // verticale
             {
                 return 1;
             }
-            else if ((arr[i] == arr[i + 4] && arr[i] == arr[i + 8]) || (arr[i] == arr[i+2] && arr[i] == arr[i+6])) //diagonale
+            else if ((arr[0] == arr[4]) && (arr[4] == arr[8]) || (arr[2] == arr[4] && arr[4] == arr[6])) // diagonale
             {
                 return 1;
             }
@@ -29,7 +29,11 @@ int isWinner(char *arr)
 
                 return 0;
             }
-        }
+            
+        }else
+            {
+                return -1;
+            }
     }
 }
 
