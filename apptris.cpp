@@ -7,44 +7,30 @@ using namespace std;
 // -1 per il pareggio
 int isWinner(char *arr)
 {
-    if ((arr[0, 1, 2] == 'X') || (arr[0, 1, 2] =='O'))
+    for (int i = 0; i < 9; i++)
     {
-        *arr = 1;
+        if (arr[i] != '-')
+        {
+
+            if (arr[i] == arr[i + 1] && arr[i] == arr[i + 2])
+            {
+                return 1;
+            }
+            else if (arr[i] == arr[i + 3] && arr[i] == arr[i + 6])
+            {
+                return 1;
+            }
+            else if ((arr[i] == arr[i + 4] && arr[i] == arr[i + 8]) || (arr[2] == arr[+2] && arr[2] == arr[6]))
+            {
+                return 1;
+            }
+            else
+            {
+
+                return 0;
+            }
+        }
     }
-    else if ((arr[0, 3, 6] == 'X')||(arr[0, 3, 6] =='O'))
-    {
-        *arr = 1;
-    }
-    else if ((arr[2, 5, 8] == 'X')||(arr[2, 5, 8] == 'O'))
-    {
-        *arr = 1;
-    }
-    else if ((arr[6, 7, 8] == 'X')||(arr[6, 7, 8] == 'O'))
-    {
-        *arr = 1;
-    }
-    else if ((arr[0, 4, 8] == 'X')||(arr[0, 4, 8] == 'O'))
-    {
-        *arr = 1;
-    }
-    else if ((arr[2, 4, 6] == 'X')||(arr[2, 4, 6] == 'O'))
-    {
-        *arr = 1;
-    }
-    else if ((arr[1, 4, 7] == 'X')||(arr[1, 4, 7] == 'O'))
-    {
-        *arr = 1;
-    }
-    else if ((arr[3, 4, 5] == 'X')||(arr[3, 4, 5] == 'O'))
-    {
-        *arr = 1;
-    }
-    else
-    {
-      *arr = -1;   
-    }
-    return *arr;
-   
 }
 
 void stampa(char *a)
