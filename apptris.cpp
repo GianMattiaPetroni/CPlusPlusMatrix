@@ -12,15 +12,15 @@ int isWinner(char *arr)
         if (arr[i] != '-')
         {
 
-            if (arr[i] == arr[i + 1] && arr[i] == arr[i + 2])
+            if (arr[i] == arr[i + 1] && arr[i] == arr[i + 2]) //orizzontale
             {
                 return 1;
             }
-            else if (arr[i] == arr[i + 3] && arr[i] == arr[i + 6])
+            else if (arr[i] == arr[i + 3] && arr[i] == arr[i + 6]) //verticale
             {
                 return 1;
             }
-            else if ((arr[i] == arr[i + 4] && arr[i] == arr[i + 8]) || (arr[2] == arr[+2] && arr[2] == arr[6]))
+            else if ((arr[i] == arr[i + 4] && arr[i] == arr[i + 8]) || (arr[i] == arr[i+2] && arr[i] == arr[i+6])) //diagonale
             {
                 return 1;
             }
