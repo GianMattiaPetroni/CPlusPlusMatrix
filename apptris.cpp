@@ -41,7 +41,7 @@ int isWinner(char *arr)
     }
     else
     {
-        *arr = -1;
+      *arr = -1;   
     }
     return *arr;
    
