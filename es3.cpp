@@ -3,42 +3,36 @@
 using namespace std;
 
 int main()
-{
-    int righe = 5;
-    int colonne = 5;
-
+{int righe=5;
+    int colonne=5;
     int matrice[righe][colonne];
-
-    for (int i = 0; i < righe; i++)
-    {
-        for (int j = 0; j < colonne; j++)
-        {
-            matrice[i][j] = rand() % 10;
+    for(int i=0; i<righe; i++){
+        for(int j=0; j<colonne; j++){
+            matrice[i][j]= random()%10; 
+            
         }
     }
-
-    cout << "    ";
-    for (int i = 0; i < colonne; i++)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
-    int trattini = colonne * 2 + 4;
-    for (int i = 0; i < trattini; i++)
-    {
-        cout << "-";
-    }
-    cout << endl;
-
-    for (int i = 0; i < righe; i++)
-    {
-
-        cout << i << "|  ";
-
-        for (int j = 0; j < colonne; j++)
-        {
+ 
+ 
+    for(int i=0; i<righe; i++){
+        int somma=0;
+        for(int j=0; j<colonne; j++){
             cout << matrice[i][j] << " ";
+            somma+=matrice[i][j];
         }
+        cout << " | " << somma;
         cout << endl;
     }
+ 
+    cout << "----------------" << endl;
+    
+   
+    for(int j=0; j<colonne; j++){
+        int somma=0;
+        for(int i=0; i<righe; i++){
+            somma+=matrice[i][j];
+        }
+        cout << somma << " ";
+    }
 }
+    
