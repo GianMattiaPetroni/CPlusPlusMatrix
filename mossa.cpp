@@ -21,29 +21,15 @@ void stampa(char *tab)
 int main()
 {
     int risultato = -1;
-    char vuoto = '_';
+    char VUOTO = '_';
 
     // inizializzo la tab
     char tab[9];
     for (int i = 0; i < 9; i++)
     {
-        tab[i] = vuoto;
+        tab[i] = VUOTO;
     }
     stampa(tab);
-
-/*
-    X _ X
-    _ O _
-    _ _ _
-*/
-
-    tab[0] = 'X';
-    tab[2] = 'X';
-    tab[4] = 'O';
-
-    stampa(tab);
-
-    // QUI LAVORO
 
     int combinazioni[8][3] = {
         {0, 1, 2},
@@ -55,14 +41,29 @@ int main()
         {0, 4, 8},
         {2, 4, 6}};
 
-    for (int i = 0; i < 8; i++)
+    /*
+        O O _
+        X _ _
+        X _ _
+    */
+
+    tab[0] = 'O';
+    tab[1] = 'O';
+    tab[3] = 'X';
+    tab[6] = 'X';
+
+    stampa(tab);
+
+    // QUI LAVORO
+
+    for (int i = 0; i < 8; i++) // due X su 0 e 1
     {
 
         char a = tab[combinazioni[i][0]];
         char b = tab[combinazioni[i][1]];
         char c = tab[combinazioni[i][2]];
 
-        bool condizione = a == b && c == vuoto && a == 'X';
+        bool condizione = a == b && c == VUOTO && a == 'X';
 
         if (condizione)
         {
@@ -70,26 +71,13 @@ int main()
         }
     }
 
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 8; i++) // due X su 0 e 2
     {
         char a = tab[combinazioni[i][0]];
-        char b = tab[combinazioni[i][1]];
-        char c = tab[combinazioni[i][2]];
+        char b = tab[combinazioni[i][2]];
+        char c = tab[combinazioni[i][1]];
 
-        bool condizione = c == b && a == vuoto && c == 'X';
-
-        if (condizione)
-        {
-            risultato = combinazioni[i][0];
-        }
-    }
-    for (int i = 0; i < 8; i++)
-    {
-        char a = tab[combinazioni[i][0]];
-        char b = tab[combinazioni[i][1]];
-        char c = tab[combinazioni[i][2]];
-
-        bool condizione = a == c && b == vuoto && c == 'X';
+        bool condizione = a == b && c == VUOTO && a == 'X';
 
         if (condizione)
         {
@@ -97,5 +85,69 @@ int main()
         }
     }
 
-    cout << "risultato ottenuto: " << risultato << " | risultato atteso: 1" << endl;
+    for (int i = 0; i < 8; i++) // due X su 1 e 2
+    {
+
+        char a = tab[combinazioni[i][1]];
+        char b = tab[combinazioni[i][2]];
+        char c = tab[combinazioni[i][0]];
+
+        bool condizione = a == b && c == VUOTO && a == 'X';
+
+        if (condizione)
+        {
+            risultato = combinazioni[i][0];
+        }
+    }
+
+    // ora controllo se il computer può vincere
+    // se ci sono due O metto il terzo
+
+    for (int i = 0; i < 8; i++) // due X su 0 e 1
+    {
+
+        char a = tab[combinazioni[i][0]];
+        char b = tab[combinazioni[i][1]];
+        char c = tab[combinazioni[i][2]];
+
+        bool condizione = a == b && c == VUOTO && a == 'O';
+
+        if (condizione)
+        {
+            risultato = combinazioni[i][2];
+        }
+    }
+
+    for (int i = 0; i < 8; i++) // due X su 0 e 2
+    {
+        char a = tab[combinazioni[i][0]];
+        char b = tab[combinazioni[i][2]];
+        char c = tab[combinazioni[i][1]];
+
+        bool condizione = a == b && c == VUOTO && a == 'O';
+
+        if (condizione)
+        {
+            risultato = combinazioni[i][1];
+        }
+    }
+
+    for (int i = 0; i < 8; i++) // due X su 1 e 2
+    {
+
+        char a = tab[combinazioni[i][1]];
+        char b = tab[combinazioni[i][2]];
+        char c = tab[combinazioni[i][0]];
+
+        bool condizione = a == b && c == VUOTO && a == 'O';
+
+        if (condizione)
+        {
+            risultato = combinazioni[i][0];
+        }
+    }
+
+    
+    cout << "risultato: " << risultato << " atteso: 2" << endl;
+    
 }
